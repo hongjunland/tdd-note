@@ -1,6 +1,8 @@
 package com.tddnote.user;
 
+import com.tddnote.common.BaseEntity;
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
 
@@ -9,9 +11,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@SuperBuilder
 @Builder
 @Table(name = "users")
-public class User {
+public class User extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;

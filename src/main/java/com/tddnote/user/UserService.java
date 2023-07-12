@@ -1,8 +1,10 @@
 package com.tddnote.user;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
@@ -18,5 +20,9 @@ public class UserService {
     }
     public List<User> findAll(){
         return userRepository.findAll();
+    }
+
+    public User findByUserId(Long userId)  {
+        return userRepository.findById(userId).orElseThrow(EntityNotFoundException::new);
     }
 }
